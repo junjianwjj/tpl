@@ -82,7 +82,7 @@ module.exports = function (grunt) {
                 }
 
                 grunt.file.write(dest, contents);
-                grunt.log.writeln("Template '" + dest + "' created.");
+                grunt.log.ok("Template '" + dest + "' created.");
             }
         });
     });
