@@ -1,0 +1,159 @@
+
+<style>
+    * {
+        margin: 0;
+        padding: 0
+    }
+    html,body {
+        font-family: microsoft yahei arial, "黑体";
+    }
+    .ab{
+        position: absolute;
+    }
+
+</style>
+<div style="width: 100mm; height: 180mm;" id="page_<%=printSerialId%>">
+    <div style="width: 98mm; height: 110mm; border: solid 1pt #000; overflow: hidden; margin: 0 auto; font-family: 'microsoft yahei';position: relative">
+        <div class="title ab" style="border-bottom: solid 1px #626365;width: 100%;height: 9mm;line-height: 9mm;top: 0;left: 0;">
+            <div class="ab" style="width: 30mm;height: 9mm; top: 0mm;">
+                <%try{if(waybillBranch.cpLogoUp){%>
+                <img src="http:<%=waybillBranch.cpLogoUp%>" style="height: 9mm;"/>
+                <%}}catch(ex){}%>
+            </div>
+            <div class="ab" style="width: 44mm;"></div>
+            <%try{if(waybillBranch.isCod == "1"){%>
+            <div class="ab" style="width:24mm;height:9mm;font-size: 12pt;right: 3mm;top: 0mm;position: absolute;text-align: right;">代收贷款</div>
+            <%}}catch(ex){}%>
+
+            <div class="ab" style="width:30mm;height:9mm;font-size: 12pt;right: 23mm;top: 0mm;position: absolute;text-align: center;"><%try{%><%=waybillBranch.deliveryService%> <%}catch(ex){}%><%try{if(waybillBranch.businessType == "电商特惠"){%>E<%}else{%><%=waybillBranch.businessType%><%}}catch(ex){}%>
+            </div>
+
+            <%try{if(!waybillBranch.cpLogoUp){%>
+            <div class="ab" style="width:50mm;height:9mm;font-size: 12pt; line-height: 1; left: 3mm;top: 2mm;position: absolute;text-align: left;"><%=waybillBranch.partnerName%></div>
+            <%}}catch(ex){}%>
+        </div>
+        <div class="ab" style="width:98mm;height:15mm;text-align: left;top: 9mm;left: 0;font-size: 32pt; overflow: hidden; white-space: nowrap; font-weight: bold;padding-left: 1mm;border-bottom: solid 1px #626365;"><%=waybillBranch.branchCode%></div>
+        <div class="ab" style="width:71mm;height:10mm;line-height:10mm;left:0;top: 24mm;padding-left:3mm;font-size: 16pt;border-right: solid 1px #626365;border-bottom: solid 1px #626365;"><%=waybillBranch.branchName%></div>
+        <div class="ab" style="top:24mm;right:0;width: 24mm;height: 10mm;border-bottom: solid 1px #626365; font-size: 8pt; text-align: center; line-height: 5mm;"><%=waybillBranch.printTime%></div>
+        <!-- 收件 -->
+        <div class="ab" style="top: 34mm; width: 4.2mm;padding-top: 4mm;  padding-left: 0.8mm;font-size:8pt;height: 14mm;border-right: solid 1px #626365;border-bottom: solid 1px #626365;">
+            收件
+        </div>
+        <div class="ab" style="top: 34mm;left:5mm;font-size:8pt;width: 67mm;height: 17mm;font-weight:bold;letter-spacing: 1pt;border-right: solid 1px #626365;border-bottom: solid 1px #626365;padding: 1mm 0 0 2mm;line-height: 4mm;">
+            <%=waybillBranch.buyerName%> <%=waybillBranch.buyerMobile%><br>
+            <%=waybillBranch.buyerAddress%>
+        </div>
+        <div class="ab" style="width: 24mm;height: 5mm;line-height: 5mm; top: 34mm;text-align: center;font-size: 6pt;right: 0;border-bottom: solid 1px #626365;">
+            服务
+        </div>
+        <div class="ab" style="width: 23mm;height: 24mm;right: 0;top: 39mm;border-bottom: solid 1px #626365;letter-spacing: 1pt;font-size: 5pt;padding: 1mm 0mm 0mm 2mm;line-height: 2.7mm;">
+            <%if(waybillBranch.cpCode == 'EMS'){%>
+            <%try{%><%if(waybillBranch.statePrice){%><p style="word-break: break-all;">保价金额:<%=waybillBranch.statePrice%></p><%}%><%}catch(ex){}%>
+            <%try{%><%if(waybillBranch.benefits != '0 元'){%><p style="word-break: break-all;">保价费用:<%=waybillBranch.benefits%></p><%}%><%}catch(ex){}%>
+            <%try{%><%if(waybillBranch.amount != '0.00(元)' && waybillBranch.isCod == 1){%><p style="word-break: break-all;">代收金额:<%=waybillBranch.amount%></p><%}%><%}catch(ex){}%>
+            <%try{%><%if(waybillBranch.packageWeight != '0.00(KG)'){%><p style="word-break: break-all;">计费重量:<%=waybillBranch.packageWeight%></p><%}%><%}catch(ex){}%>
+            <%} else if(waybillBranch.cpCode == 'YTO'){%>
+            <%try{%><%if(waybillBranch.statePrice){%><p style="word-break: break-all;">保价金额:<%=waybillBranch.statePrice%></p><%}%><%}catch(ex){}%>
+            <%try{%><%if(waybillBranch.benefits != '0 元'){%><p style="word-break: break-all;">保价费用:<%=waybillBranch.benefits%></p><%}%><%}catch(ex){}%>
+            <%try{%><%if(waybillBranch.amount != '0.00(元)' && waybillBranch.isCod == 1){%><p style="word-break: break-all;">代收金额:<%=waybillBranch.amount%></p><%}%><%}catch(ex){}%>
+            <%} else if(waybillBranch.cpCode == 'ZTO'){%>
+            <%try{%><%if(waybillBranch.statePrice){%><p style="word-break: break-all;">保价金额:<%=waybillBranch.statePrice%></p><%}%><%}catch(ex){}%>
+            <%try{%><%if(waybillBranch.benefits != '0 元'){%><p style="word-break: break-all;">保价费用:<%=waybillBranch.benefits%></p><%}%><%}catch(ex){}%>
+            <%try{%><%if(waybillBranch.amount != '0.00(元)' && waybillBranch.isCod == 1){%><p style="word-break: break-all;">代收金额:<%=waybillBranch.amount%></p><%}%><%}catch(ex){}%>
+            <%} else if(waybillBranch.cpCode == 'YUNDA'){%>
+            <%try{%><%if(waybillBranch.statePrice){%><p style="word-break: break-all;">保价金额:<%=waybillBranch.statePrice%></p><%}%><%}catch(ex){}%>
+            <%try{%><%if(waybillBranch.benefits != '0 元'){%><p style="word-break: break-all;">保价费用:<%=waybillBranch.benefits%></p><%}%><%}catch(ex){}%>
+            <%try{%><%if(waybillBranch.amount != '0.00(元)' && waybillBranch.isCod == 1){%><p style="word-break: break-all;">代收金额:<%=waybillBranch.amount%></p><%}%><%}catch(ex){}%>
+            <%} else if(waybillBranch.cpCode == 'SF'){%>
+            <%try{%> <%if(waybillBranch.payments){%><p style="word-break: break-all;">付款方式:<%=waybillBranch.payments%></p><%}%><%}catch(ex){}%>
+            <%try{%><%if(waybillBranch.maccount){%><p style="word-break: break-all;">月结账号:<%=waybillBranch.maccount%></p><%}%><%}catch(ex){}%>
+            <%try{%><%if(waybillBranch.thirdParty){%><p style="word-break: break-all;">第三方地区:<%=waybillBranch.thirdParty%></p><%}%><%}catch(ex){}%>
+            <%try{%><%if(waybillBranch.statePrice){%><p style="word-break: break-all;">保价金额:<%=waybillBranch.statePrice%></p><%}%><%}catch(ex){}%>
+            <%try{%><%if(waybillBranch.benefits != '0 元'){%><p style="word-break: break-all;">保价费用:<%=waybillBranch.benefits%></p><%}%><%}catch(ex){}%>
+
+            <%} else if(waybillBranch.cpCode == 'POSTB'){%>
+            <%} else{%>
+            <%try{%><%if(waybillBranch.orderFlag){%><p style="word-break: break-all;">配送环境:<%=waybillBranch.orderFlag%></p><%}%><%}catch(ex){}%>
+            <%try{%><%if(waybillBranch.thirdParty){%><p style="word-break: break-all;">第三方地区:<%=waybillBranch.thirdParty%></p><%}%><%}catch(ex){}%>
+            <%try{%><%if(waybillBranch.businessType){%><p style="word-break: break-all;">业务类型:<%=waybillBranch.businessType%></p><%}%><%}catch(ex){}%>
+            <%try{%><%if(waybillBranch.maccount){%><p style="word-break: break-all;">月结账号:<%=waybillBranch.maccount%></p><%}%><%}catch(ex){}%>
+            <%try{%> <%if(waybillBranch.payments){%><p style="word-break: break-all;">付款方式:<%=waybillBranch.payments%></p><%}%><%}catch(ex){}%>
+            <%try{%><%if(waybillBranch.amount != '0.00(元)' && waybillBranch.isCod == 1){%><p style="word-break: break-all;">代收金额:<%=waybillBranch.amount%></p><%}%><%}catch(ex){}%>
+            <%try{%><%if(waybillBranch.statePrice){%><p style="word-break: break-all;">保价金额:<%=waybillBranch.statePrice%></p><%}%><%}catch(ex){}%>
+            <%try{%><%if(waybillBranch.benefits != '0 元'){%><p style="word-break: break-all;">保价费用:<%=waybillBranch.benefits%></p><%}%><%}catch(ex){}%>
+            <%}%>
+
+        </div>
+        <!-- 寄件 -->
+        <div class="ab" style="top: 52mm;width: 4.2mm;height: 10mm;padding-top: 2mm; padding-left: 0.8mm;font-size:8pt;border-right: solid 1px #626365;border-bottom: solid 1px #626365;">
+            寄件
+        </div>
+        <div class="ab" style="width: 66mm;height: 11mm;padding: 1mm 1.5mm 0mm 1.5mm;line-height: 3mm;letter-spacing: 1pt;font-size: 6pt;top: 52mm;left: 5mm;border-right: solid 1px #626365;border-bottom: solid 1px #626365;">
+            <%=waybillBranch.consignName%> <%=waybillBranch.consignMobile%><br>
+            <%=waybillBranch.consignAddress%>
+        </div>
+        <div class="ab" style="width: 98mm;height: 25mm;top: 66mm;border-bottom: solid 1px #000;text-align: center">
+            <%try{if(waybillBranch.wayBillUrl){%>
+            <img src="<%=waybillBranch.wayBillUrl%>"/>
+            <%}}catch(ex){}%>
+        </div>
+        <div class="ab" style="width: 42mm;height: 17mm;bottom:0;left: 0;border-right: solid 1px #626365;font-size: 6pt;padding: 2mm 0 0 2mm; line-height: 1.5">
+            快件送达收件人地址，经收件人或收件人（寄件人）允许的代收人签字，视为送达。您的签字代表您已签收此包裹，并已确认商品信息无误、包装完好、没有划痕、破损等表面质量问题。
+        </div>
+        <div class="ab" style="width: 33mm;height: 17mm;bottom: 0;left: 44mm;font-size: 8pt;border-right: solid 1px #626365;padding: 2mm 0 0 2mm;">
+            <p style="margin-top: 2mm;">签收人：</p>
+            <p style="margin-top: 2mm;">时间：</p>
+        </div>
+        <div class="ab" style="width: 19mm;height: 19mm;bottom: 0;right: 0;">
+        </div>
+
+    </div>
+    <div style="width: 98mm; height: 68mm; border: solid 1pt #000; overflow: hidden; margin: 0 auto; font-family: 'microsoft yahei';position: relative">
+        <div class="ab" style="width: 98mm;height: 14mm;top: 0;left: 0;border-bottom: solid 1px #626365;">
+            <div class="ab" style="width: 30mm;height: 14mm;left: 0;top: 0;">
+                <%try{if(waybillBranch.cpLogoDown){%>
+                <img src="http:<%=waybillBranch.cpLogoDown%>" style="height: 14mm; margin: 0;"/>
+                <%}}catch(ex){}%>
+            </div>
+            <%try{if(!waybillBranch.cpLogoDown){%>
+            <div class="ab" style="width:50mm;height:14mm;font-size: 16pt; line-height: 1; left: 3mm;top: 4mm;position: absolute;text-align: left;"><%=waybillBranch.partnerName%></div>
+            <%}}catch(ex){}%>
+            <div class="ab" style="width: 68mm;height: 14mm;right: 0;top: 2mm; text-align: right;">
+                <%try{if(waybillBranch.wayBillUrlSmall){%>
+                <img src="<%=waybillBranch.wayBillUrlSmall%>"/>
+                <%}}catch(ex){}%>
+            </div>
+        </div>
+        <div class="ab" style="width: 4mm;height: 10mm;left: 0;top: 14mm;font-size: 8pt;border-right: solid 1px #626365;border-bottom: solid 1px #626365;padding-left: 1mm;padding-top: 2mm;">
+            收件
+        </div>
+        <div class="ab" style="width: 70mm;height: 10mm;top: 14mm;left: 5mm; font-size: 6pt;letter-spacing: 1pt;border-right: solid 1px #626365;border-bottom: solid 1px #626365;padding: 1mm 2mm;">
+            <%=waybillBranch.buyerName%> <%=waybillBranch.buyerMobile%><br/>
+            <%=waybillBranch.buyerAddress%>
+        </div>
+        <div class="ab" style="width: 4mm;height: 10mm;left: 0;top: 26mm;font-size: 8pt;border-right: solid 1px #626365;border-bottom: solid 1px #626365;padding-left: 1mm;padding-top: 2mm;">
+            寄件
+        </div>
+        <div class="ab" style="width: 70mm;height: 10mm;top: 26mm;left: 5mm;font-size: 6pt;letter-spacing: 1pt;border-right: solid 1px #626365;border-bottom: solid 1px #626365;padding: 1mm 2mm;">
+            <%=waybillBranch.consignName%> <%=waybillBranch.consignMobile%><br/>
+            <%=waybillBranch.consignAddress%>
+        </div>
+        <div class="ab" style="width: 19mm;height: 24mm;top:14mm;right:0;font-size: 8pt;border-bottom: solid 1px #626365;">
+            <img src="https://img.alicdn.com/tps/TB1cuXnIVXXXXbsXFXXXXXXXXXX.png" style="width: 16mm;height: 16mm;  margin: 2mm 1.5mm 0 1.5mm;"/>
+            <p style="text-align: center;">扫码有惊喜</p>
+        </div>
+        <div class="ab" style="bottom:25mm;left: 2mm;font-size: 8pt;font-weight: bold;letter-spacing: 1pt;">
+            商家自定义区
+        </div>
+        <div class="ab" style="bottom:2mm ;right: 3mm;font-size: 8pt;font-weight: bold; letter-spacing: 1pt;">
+            已验视
+        </div>
+
+        <%if(waybillBranch.replenish){%>
+        <div class="ab" style="width:24mm;height:9mm;font-size: 12pt;right: 2mm;top: 40mm;position: absolute;text-align: right;">C</div>
+        <%}%>
+        <div class="ab" style="bottom:5mm ;right: 0;font-size: 40pt;font-weight: bold; width: 98mm; text-align: center;">
+            <%=waybillBranch.cartCode%>
+        </div>
+    </div>
+</div>
